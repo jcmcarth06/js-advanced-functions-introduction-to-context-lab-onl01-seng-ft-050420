@@ -20,4 +20,13 @@ const createTimeInEvent = (employee, dateStamp) => {
     date: dateStamp.split(' ')[0]
   });
   return employee
-}
+};
+
+const createTimeOutEvent = (employee, dateStamp) => {
+  employee.timeOutEvents.push({
+    type: "TimeOut",
+    hour: parseInt(dateStamp.split(' '[1]),
+    date: dateStamp.split(' ')[0]
+  });
+  return employee
+};
