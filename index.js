@@ -30,3 +30,7 @@ const createTimeOutEvent = (employee, dateStamp) => {
   });
   return employee
 };
+
+const hoursWorkedOnDate = (employee, date) => {
+  let timeIn = employee.timeIEvents.find( e => e.date === date)
+}
