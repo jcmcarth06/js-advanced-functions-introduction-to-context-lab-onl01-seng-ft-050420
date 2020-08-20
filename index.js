@@ -12,3 +12,12 @@ const createEmployeeRecord = info => {
 };
 
 const CreateEmployeeRecords = array => array.map( employee => CreateEmployeeRecords(employee))
+
+const createTimeInEvent = (employee, dateStamp) => {
+  employee.timeInEvents.push({
+    type: "TimeIn",
+    hour: parseInt(dateStamp.split(' '[1]),
+    date: dateStamp.split(' ')[0]
+  });
+  return employee
+}
