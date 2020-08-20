@@ -25,12 +25,27 @@ const createTimeInEvent = (employee, dateStamp) => {
 const createTimeOutEvent = (employee, dateStamp) => {
   employee.timeOutEvents.push({
     type: "TimeOut",
-    hour: parseInt(dateStamp.split(' '[1]),
+    hour: parseInt(dateStamp.split(' ')[1],
     date: dateStamp.split(' ')[0]
   });
   return employee
 };
 
 const hoursWorkedOnDate = (employee, date) => {
-  let timeIn = employee.timeIEvents.find( e => e.date === date)
-}
+  let timeIn = employee.timeInEvents.find( e => e.date === date)
+  let timeOut = employee.timeOutEvents.find( e => e.date === date)
+  let hours = parseInt(timeOut.hour - timeIn.hour)/100
+  return hours
+};
+
+const wagesEarnedOnDate = (employee, date) => {
+  return parseInt(hoursWorkedOnDate(employee, date) * employee.payPerHour);
+};
+
+const allWagesFor = employee => {
+  const dates = employee.timeInEvents.map(e => e.date);
+  return dates.reduce( (acc, i) => {
+    acc += wagesEarnedOnDate(employee, i);
+    return acc;
+  }, 0);
+};
