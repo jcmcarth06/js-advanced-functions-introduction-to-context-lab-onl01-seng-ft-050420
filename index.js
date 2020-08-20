@@ -49,3 +49,15 @@ const allWagesFor = employee => {
     return acc;
   }, 0);
 };
+
+const findEmployeeByFirstName = (array, firstName) => {
+  return array.find(e => e.firstName === firstName)
+};
+
+const calculatePayroll = (array) => {
+  const wages = array.map(e => allWagesFor(e))
+  return wages.reduce( (acc, i) => (
+    acc += i;
+    return acc;
+  ), 0)
+};
